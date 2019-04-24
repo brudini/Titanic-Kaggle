@@ -1,0 +1,84 @@
+PassengerId (Id, not use) int64
+Survived (class 0=Survived, 1=Not survived) int64
+Pclass (1-3) int64
+Name (not use, nominal) object
+Sex (female, male) object
+Age (numero, missing values) float64
+SibSp (0-8) (sibling/spouse) int64
+Parch (0-6) (parent/child) int64
+Ticket (numero, not use) object
+Fare (0-512) (tarifa) float64
+Cabin (missing values, not use) object
+Embarked (C - Cherbourg, S - Southampton, Q = Queenstown) object
+
+
+       PassengerId    Survived      Pclass         Age       SibSp       Parch        Fare
+count   891.000000  891.000000  891.000000  714.000000  891.000000  891.000000  891.000000
+mean    446.000000    0.383838    2.308642   29.699118    0.523008    0.381594   32.204208
+std     257.353842    0.486592    0.836071   14.526497    1.102743    0.806057   49.693429
+min       1.000000    0.000000    1.000000    0.420000    0.000000    0.000000    0.000000
+25%     223.500000    0.000000    2.000000   20.125000    0.000000    0.000000    7.910400
+50%     446.000000    0.000000    3.000000   28.000000    0.000000    0.000000   14.454200
+75%     668.500000    1.000000    3.000000   38.000000    1.000000    0.000000   31.000000
+max     891.000000    1.000000    3.000000   80.000000    8.000000    6.000000  512.329200
+
+
+Eliminar variables Ticket, PassengerId, Name, Cabin ya que no proporcionan informacion relevante para predecir si esa persona sobrevive
+
+                         Name   Sex  Ticket    Cabin Embarked
+count                     891   891     891      204      889
+unique                    891     2     681      147        3
+top     Cairns, Mr. Alexander  male  347082  B96 B98        S
+freq                        1   577       7        4      64
+
+Se puede observar que la mayoria de los pasajeros eran de sexo masculino, sobre un 70%, luego como los valores de la cabina de valores unicos son casi el doble del total, esto quiere decir que la cabinas se compartian entre los pasajeros y la mayoria de los pasajeros venian de Southampton
+
+      Sex  Survived
+0  female  0.742038
+1    male  0.188908
+
+
+Como se puede ver la variable sexo es importante ya que gracias a esta variable se puede saber con gran acierto si sobrevive la persona o no, esto se debe a que las personas con sexo femenimo tenian una alta tasa de supervivencia
+
+   Pclass  Survived
+0       1  0.629630
+1       2  0.472826
+2       3  0.242363
+
+Ademas de esto se puede observar que la clase procediente del pasajero es muy importante, porque la gente procediente de primera clase tenia como el doble de probabilidad de las demas clases.
+
+   SibSp  Survived
+1      1  0.535885
+2      2  0.464286
+0      0  0.345395
+3      3  0.250000
+4      4  0.166667
+5      5  0.000000
+6      8  0.000000
+
+   Parch  Survived
+3      3  0.600000
+1      1  0.550847
+2      2  0.500000
+0      0  0.343658
+5      5  0.200000
+4      4  0.000000
+6      6  0.000000
+
+
+Estas dos variables es mejor unificarlas en una unica variable "Familia", ya que ayudan a saber si una persona con familia tiene probabilidad a sobrevivir ya que por lo que se ve una persona con una media de 3 padres o hijos y con 1 o 2 hermanos y esposa tenian mas probabilidad a sobrevivir.
+
+
+Viendo la grafica AgeVsSurvived se puede observar que la edad es una variable muy importante que genera correlacion frente a survives, porque las personas entre 18 y 35 años tenian mas probabilidad a morir mientras los niños con 0 a 8 años tenian alta tasa de sobrevivir y las personas mayores y entre 30 y 30 y 35 años.
+
+
+Analizando la grafica PclassVsAge se puede ver que las personas entre 23 y 35 años son pertenecientes a la 3º clase, luego la gente mas mayor estan en la primera clase y la mayoria de los niños estan entre la segunda y tercera clase.
+
+
+Por lo tanto, puede existir una correlacion entre la supervivencia de las pesonas con la edad y la clase perteneciente, como se observa en la grafica Age_PclassVsSurvived la gente de primera clase con edad adulta sobrevivian, los niños de la segunda clase sobrevivian y de la tercerca clase sobrevivian la mitad de los niños. Luego la gente joven (18-30 años) morian y la gente de la primera clase sobrevivian mas de la mitad independientemente de la edad, pero la de 2 clase sobrevivian la gente mas joven (0-18 años).Con lo que se esta observando es que estas dos variables son muy importantes para predecir si una persona sobrevivia.
+
+Ahora se va a observar si es importante conjuntar la variable Sex frente a las que he mencionado anteriormente, como se puede observar claramente las personas con sexo femenino tiene la mayor tasa de supervivencia en comparacion al sexo masculino independientemente de la clase perteneciente, luego se puede ver que ya dependiendo de la clase tienes una diferencia un poco mas notable en si los hombres sobreviven o las mujeres ya que las mujeres de 3º clase tiene un 50% para sobrevivir.
+
+Otra variable bastante interesante es la ubicacion donde embarco la persona y se va a analizar tal variable frente a la supervivencia y ademas un analisis mas fuerte si existe correlacion con las demas variables.Como se observa en la grafica las mujeres tienen la alta tasa de supervivencia, pero si se observa con mayor detalle, los hombres pertenecientes de la embarcacion C, tiene una gran tasa de supervivencia frente a las mujeres, por lo tanto esta variable nos va a mostrar una gran diferencia entre saber si un hombre tiene mayor probabilidad a sobrevivir ya que si es de esta embarcacion y de primera o segunda clase tiene una gran tasa de sobrevivir, mientras si es del resto de embarcacion las mujeres de primera y segunda clase tiene esta alta tasa de supervivencia.
+Ademas se puede observar que las personas qie
+
