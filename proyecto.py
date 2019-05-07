@@ -16,6 +16,7 @@ test_df = pd.read_csv('./test.csv')
 print(train_df.columns.values)
 
 #descripcion del dataset
+#sadad
 train_df.head()
 
 #descripcion breve del dataset
